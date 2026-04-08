@@ -41,7 +41,7 @@ export default function PianoRoll({ notes, onNotesChange }: PianoRollProps) {
   };
 
   // Generate keys midi 60 to 84
-  const keys = [];
+  const keys :any = [];
   for (let midi = 84; midi >= 60; midi--) {
     const noteName = midiToNote(midi);
     keys.push({ midi, note: noteName, sharp: isSharp(noteName) });
@@ -143,7 +143,7 @@ export default function PianoRoll({ notes, onNotesChange }: PianoRollProps) {
     >
       {/* 1. PIANO KEYS */}
       <div style={{ width: 80, borderRight: "2px solid #000", flexShrink: 0 }}>
-        {keys.map((key) => (
+        {keys.map((key:any) => (
           <div
             key={key.midi}
             style={{
@@ -181,7 +181,7 @@ export default function PianoRoll({ notes, onNotesChange }: PianoRollProps) {
           overflow: "hidden"
         }}
       >
-        {keys.map((key, i) => (
+        {keys.map((key:any, i:any) => (
           <div
             key={`row-${key.midi}`}
             onClick={(e) => handleAddNote(e, i)}
@@ -198,7 +198,7 @@ export default function PianoRoll({ notes, onNotesChange }: PianoRollProps) {
 
         {/* Notes */}
         {notes.map((n) => {
-          const rowIndex = keys.findIndex((k) => k.midi === n.pitch);
+          const rowIndex = keys.findIndex((k:any) => k.midi === n.pitch);
           if (rowIndex === -1) return null;
           return (
             <div
